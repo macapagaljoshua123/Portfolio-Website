@@ -155,7 +155,7 @@
       background: var(--accent);
       transition: width 300ms;
     }
-    .nav-links a:hover { color: var(--#22ccf7); }
+    .nav-links a:hover { color: var(--light); }
     .nav-links a:hover::after { width: 100%; }
 
     /* mobile hamburger */
@@ -163,7 +163,6 @@
       display: none;
       background: none;
       border: none;
-      color: var(--#22ccf7);
       color: #22ccf7;
       font-size: 1.8rem;
       cursor: pointer;
@@ -363,7 +362,18 @@
 
     /* PROJECTS */
     #projects { background: var(--dark); }
-    .projects-list { display: flex; flex-direction: column; gap: 2.5rem; }
+    .projects-wrapper {
+      position: relative;
+    }
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      transition: opacity 0.3s ease;
+    }
+    .projects-list.fade {
+      opacity: 0;
+    }
     .project-card {
       display: grid;
       grid-template-columns: 200px 1fr;
@@ -419,6 +429,46 @@
       display: inline-flex; align-items: center; gap: 0.4rem;
     }
     .project-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(34,204,247,0.06); }
+
+    /* Pagination controls */
+    .pagination-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 3rem;
+      padding: 0.5rem 0;
+    }
+    .pagination-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.6rem 1.4rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 200ms;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .pagination-btn:hover:not(:disabled) {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(34,204,247,0.06);
+    }
+    .pagination-btn:disabled {
+      opacity: 0.25;
+      cursor: not-allowed;
+    }
+    .page-indicator {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      min-width: 90px;
+      text-align: center;
+    }
 
     /* CONTACT */
     #contact { background: var(--dark2); }
@@ -541,6 +591,8 @@
 
       footer { padding: 1.5rem; flex-direction: column; text-align: center; }
       footer .footer-links { flex-wrap: wrap; justify-content: center; }
+
+      .pagination-controls { gap: 0.8rem; flex-wrap: wrap; }
     }
 
     @media (max-width: 480px) {
@@ -665,91 +717,274 @@
           <a href="https://www.infinyfree.com/" target="_blank">InfinyFree</a>, and <a href="https://portfolio-navy-beta-63.vercel.app/" target="_blank">Vercel</a>.
         </p>
       </div>
-      <div class="projects-list">
-        <!-- PROJECT 1 -->
-        <div class="project-card">
-          <div class="project-thumb">
-            <img src="ai-assistant.png" alt="AI Search API" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-robot\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
-          </div>
-          <div class="project-info">
-            <p class="project-type">Full-Stack · AI</p>
-            <h3 class="project-title">Search API — Artificial Intelligence</h3>
-            <p class="project-tech">CSS 51.1% · TypeScript 31.0% · Python 16.9%</p>
-            <div class="project-languages">
-              <div class="language-bar">
-                <div class="language-segment" style="width:51.1%;background:#CE9178;"></div>
-                <div class="language-segment" style="width:31.0%;background:#3178C6;"></div>
-                <div class="language-segment" style="width:16.9%;background:#3572A5;"></div>
-                <div class="language-segment" style="width:1.0%;background:#858585;"></div>
+
+      <div class="projects-wrapper">
+        <!-- PROJECTS LIST - Each page has different projects -->
+        <div class="projects-list" id="projectsList">
+          <!-- ===== PAGE 1 PROJECTS (Default visible) ===== -->
+          <div class="project-card">
+            <div class="project-thumb">
+              <img src="ai-assistant.png" alt="AI Search API" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-robot\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
+            </div>
+            <div class="project-info">
+              <p class="project-type">Full-Stack · AI</p>
+              <h3 class="project-title">Search API — Artificial Intelligence</h3>
+              <p class="project-tech">CSS 51.1% · TypeScript 31.0% · Python 16.9%</p>
+              <div class="project-languages">
+                <div class="language-bar">
+                  <div class="language-segment" style="width:51.1%;background:#CE9178;"></div>
+                  <div class="language-segment" style="width:31.0%;background:#3178C6;"></div>
+                  <div class="language-segment" style="width:16.9%;background:#3572A5;"></div>
+                  <div class="language-segment" style="width:1.0%;background:#858585;"></div>
+                </div>
+                <div class="language-list">
+                  <div class="language-item"><span class="language-dot" style="background:#CE9178;"></span> CSS 51.1%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#3178C6;"></span> TypeScript 31.0%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#3572A5;"></span> Python 16.9%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#858585;"></span> Other 1.0%</div>
+                </div>
               </div>
-              <div class="language-list">
-                <div class="language-item"><span class="language-dot" style="background:#CE9178;"></span> CSS 51.1%</div>
-                <div class="language-item"><span class="language-dot" style="background:#3178C6;"></span> TypeScript 31.0%</div>
-                <div class="language-item"><span class="language-dot" style="background:#3572A5;"></span> Python 16.9%</div>
-                <div class="language-item"><span class="language-dot" style="background:#858585;"></span> Other 1.0%</div>
+              <div class="project-icons"><i class="fab fa-js-square"></i><i class="fab fa-css3-alt"></i><i class="fab fa-react"></i><i class="fab fa-python"></i></div>
+              <p class="project-desc">A full-stack website that lets users ask AI anything. Powered by Gemini AI 2.5 Flash with DuckDuckGo for real-time web scraping.</p>
+              <div class="project-btns">
+                <a href="https://github.com/macapagaljoshua123/dev-intern-search-api" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
               </div>
             </div>
-            <div class="project-icons"><i class="fab fa-js-square"></i><i class="fab fa-css3-alt"></i><i class="fab fa-react"></i><i class="fab fa-python"></i></div>
-            <p class="project-desc">A full-stack website that lets users ask AI anything. Powered by Gemini AI 2.5 Flash with DuckDuckGo for real-time web scraping.</p>
-            <div class="project-btns">
-              <a href="https://github.com/macapagaljoshua123/dev-intern-search-api" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
+          </div>
+          
+          <div class="project-card">
+            <div class="project-thumb">
+              <img src="pceco.png" alt="PC Go Site" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-desktop\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
+            </div>
+            <div class="project-info">
+              <p class="project-type">Full-Stack · E-Commerce</p>
+              <h3 class="project-title">PC Go Site</h3>
+              <p class="project-tech">JavaScript 91.2% · CSS 6.2% · HTML 2.6%</p>
+              <div class="project-languages">
+                <div class="language-bar">
+                  <div class="language-segment" style="width:91.2%;background:#F7DF1E;"></div>
+                  <div class="language-segment" style="width:6.2%;background:#CE9178;"></div>
+                  <div class="language-segment" style="width:2.6%;background:#E34C26;"></div>
+                </div>
+                <div class="language-list">
+                  <div class="language-item"><span class="language-dot" style="background:#F7DF1E;"></span> JavaScript 91.2%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#CE9178;"></span> CSS 6.2%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#E34C26;"></span> HTML 2.6%</div>
+                </div>
+              </div>
+              <div class="project-icons"><i class="fab fa-js-square"></i><i class="fab fa-react"></i><i class="fab fa-css3-alt"></i></div>
+              <p class="project-desc">A platform that lets users configure and purchase custom PC builds. Includes authentication with login and sign-in forms.</p>
+              <div class="project-btns">
+                <a href="https://github.com/macapagaljoshua123/pcgosite" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-card">
+            <div class="project-thumb">
+              <img src="edgelink.png" alt="Edgelink" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-link\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
+            </div>
+            <div class="project-info">
+              <p class="project-type">Full-Stack · SaaS</p>
+              <h3 class="project-title">Edgelink Web Application</h3>
+              <p class="project-tech">HTML 88.2% · PHP 11.8%</p>
+              <div class="project-languages">
+                <div class="language-bar">
+                  <div class="language-segment" style="width:88.2%;background:#E34C26;"></div>
+                  <div class="language-segment" style="width:11.8%;background:#777BB4;"></div>
+                </div>
+                <div class="language-list">
+                  <div class="language-item"><span class="language-dot" style="background:#E34C26;"></span> HTML 88.2%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#777BB4;"></span> PHP 11.8%</div>
+                </div>
+              </div>
+              <div class="project-icons"><i class="fab fa-js-square"></i><i class="fab fa-css3-alt"></i><i class="fab fa-html5"></i></div>
+              <p class="project-desc">A live collaboration platform with user auth, real-time forms, events, word clouds, and Q&amp;A sessions.</p>
+              <div class="project-btns">
+                <a href="https://github.com/macapagaljoshua123/edgelinkfree" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
+                <a href="http://edgelinkwebapp.great-site.net/?i=1" target="_blank" class="project-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== PAGE 2 PROJECTS (hidden by default) ===== -->
+          <div class="project-card" style="display:none;">  
+            <div class="project-thumb">
+              <img src="image.png" alt="Project 4" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-code\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
+            </div>
+            <div class="project-info">
+              <p class="project-type">Web App · Reactjs + Puppeteerjs +  FASTAPI Python</p>
+              <h3 class="project-title">HelloFlying Finding Cheapest Flight</h3>
+              <p class="project-tech">React 54.4% · CSS 31.2% · Python 16.5%</p>
+              <div class="project-languages">
+                <div class="language-bar">
+                  <div class="language-segment" style="width:54.4%;background:#eeff00;"></div>
+                  <div class="language-segment" style="width:31.2%;background:#CE9178;"></div>
+                  <div class="language-segment" style="width:16.5%;background:#3572A5;"></div>
+                </div>
+                <div class="language-list">
+                  <div class="language-item"><span class="language-dot" style="background:#eeff00;"></span> Javascript 54.4%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#CE9178;"></span> CSS 31.2%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#3572A5;"></span> Python 16.5%</div>
+                </div>
+              </div>
+              <div class="project-icons"><i class="fab fa-js-square"></i><i class="fab fa-css3-alt"></i><i class="fab fa-python"></i></div>
+              <p class="project-desc">A modern flight search application that aggregates data from multiple sources to find the cheapest options for users.</p>
+              <div class="project-btns">
+                <a href="https://github.com/macapagaljoshua123/helloflying" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" style="display:none;">
+            <div class="project-thumb">
+              <img src="project5.png" alt="Project 5" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-mobile-alt\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
+            </div>
+            <div class="project-info">
+              <p class="project-type">Python Application APP</p>
+              <h3 class="project-title">Unihub System</h3>
+              <p class="project-tech">Dart 70% · Flutter 30%</p>
+              <div class="project-languages">
+                <div class="language-bar">
+                  <div class="language-segment" style="width:70%;background:#00B4AB;"></div>
+                  <div class="language-segment" style="width:30%;background:#02569B;"></div>
+                </div>
+                <div class="language-list">
+                  <div class="language-item"><span class="language-dot" style="background:#00B4AB;"></span> Dart 70%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#02569B;"></span> Flutter 30%</div>
+                </div>
+              </div>
+              <div class="project-icons"><i class="fab fa-flutter"></i><i class="fab fa-js-square"></i></div>
+              <p class="project-desc">A cross-platform fitness tracking app with workout plans, progress charts, and integration with wearable devices.</p>
+              <div class="project-btns">
+                <a href="#" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" style="display:none;">
+            <div class="project-thumb">
+              <img src="project6.png" alt="Project 6" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-database\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
+            </div>
+            <div class="project-info">
+              <p class="project-type">Backend · API</p>
+              <h3 class="project-title">E-Commerce API Gateway</h3>
+              <p class="project-tech">Node.js 60% · Python 25% · SQL 15%</p>
+              <div class="project-languages">
+                <div class="language-bar">
+                  <div class="language-segment" style="width:60%;background:#68A063;"></div>
+                  <div class="language-segment" style="width:25%;background:#3572A5;"></div>
+                  <div class="language-segment" style="width:15%;background:#00758F;"></div>
+                </div>
+                <div class="language-list">
+                  <div class="language-item"><span class="language-dot" style="background:#68A063;"></span> Node.js 60%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#3572A5;"></span> Python 25%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#00758F;"></span> SQL 15%</div>
+                </div>
+              </div>
+              <div class="project-icons"><i class="fab fa-node-js"></i><i class="fab fa-python"></i><i class="fas fa-database"></i></div>
+              <p class="project-desc">A scalable API gateway for e-commerce platforms handling authentication, payment processing, and order management.</p>
+              <div class="project-btns">
+                <a href="#" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ===== PAGE 3 PROJECTS (hidden by default) ===== -->
+          <div class="project-card" style="display:none;">
+            <div class="project-thumb">
+              <img src="project7.png" alt="Project 7" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-chart-line\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
+            </div>
+            <div class="project-info">
+              <p class="project-type">Data Visualization</p>
+              <h3 class="project-title">Analytics Dashboard</h3>
+              <p class="project-tech">Vue.js 50% · D3.js 35% · CSS 15%</p>
+              <div class="project-languages">
+                <div class="language-bar">
+                  <div class="language-segment" style="width:50%;background:#41B883;"></div>
+                  <div class="language-segment" style="width:35%;background:#F9A03C;"></div>
+                  <div class="language-segment" style="width:15%;background:#CE9178;"></div>
+                </div>
+                <div class="language-list">
+                  <div class="language-item"><span class="language-dot" style="background:#41B883;"></span> Vue.js 50%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#F9A03C;"></span> D3.js 35%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#CE9178;"></span> CSS 15%</div>
+                </div>
+              </div>
+              <div class="project-icons"><i class="fab fa-vuejs"></i><i class="fas fa-chart-pie"></i><i class="fab fa-css3-alt"></i></div>
+              <p class="project-desc">Interactive analytics dashboard with real-time data visualization, customizable widgets, and export capabilities.</p>
+              <div class="project-btns">
+                <a href="#" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
+                <a href="#" target="_blank" class="project-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" style="display:none;">
+            <div class="project-thumb">
+              <img src="project8.png" alt="Project 8" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-cloud\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
+            </div>
+            <div class="project-info">
+              <p class="project-type">Cloud · DevOps</p>
+              <h3 class="project-title">Container Orchestration Platform</h3>
+              <p class="project-tech">Python 45% · Shell 30% · YAML 25%</p>
+              <div class="project-languages">
+                <div class="language-bar">
+                  <div class="language-segment" style="width:45%;background:#3572A5;"></div>
+                  <div class="language-segment" style="width:30%;background:#4EAA25;"></div>
+                  <div class="language-segment" style="width:25%;background:#CB171E;"></div>
+                </div>
+                <div class="language-list">
+                  <div class="language-item"><span class="language-dot" style="background:#3572A5;"></span> Python 45%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#4EAA25;"></span> Shell 30%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#CB171E;"></span> YAML 25%</div>
+                </div>
+              </div>
+              <div class="project-icons"><i class="fab fa-python"></i><i class="fas fa-terminal"></i><i class="fas fa-cloud"></i></div>
+              <p class="project-desc">A container orchestration platform for deploying and managing microservices in production environments.</p>
+              <div class="project-btns">
+                <a href="#" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card" style="display:none;">
+            <div class="project-thumb">
+              <img src="project9.png" alt="Project 9" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-gamepad\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
+            </div>
+            <div class="project-info">
+              <p class="project-type">Game Development</p>
+              <h3 class="project-title">2D Platformer Game</h3>
+              <p class="project-tech">C# 60% · Unity 40%</p>
+              <div class="project-languages">
+                <div class="language-bar">
+                  <div class="language-segment" style="width:60%;background:#178600;"></div>
+                  <div class="language-segment" style="width:40%;background:#000000;"></div>
+                </div>
+                <div class="language-list">
+                  <div class="language-item"><span class="language-dot" style="background:#178600;"></span> C# 60%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#000000;"></span> Unity 40%</div>
+                </div>
+              </div>
+              <div class="project-icons"><i class="fas fa-gamepad"></i><i class="fab fa-unity"></i></div>
+              <p class="project-desc">A 2D platformer game with multiple levels, power-ups, and boss battles built with Unity game engine.</p>
+              <div class="project-btns">
+                <a href="#" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
+                <a href="#" target="_blank" class="project-btn"><i class="fas fa-external-link-alt"></i> Play Demo</a>
+              </div>
             </div>
           </div>
         </div>
-        <!-- PROJECT 2 -->
-        <div class="project-card">
-          <div class="project-thumb">
-            <img src="pceco.png" alt="PC Go Site" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-desktop\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
-          </div>
-          <div class="project-info">
-            <p class="project-type">Full-Stack · E-Commerce</p>
-            <h3 class="project-title">PC Go Site</h3>
-            <p class="project-tech">JavaScript 91.2% · CSS 6.2% · HTML 2.6%</p>
-            <div class="project-languages">
-              <div class="language-bar">
-                <div class="language-segment" style="width:91.2%;background:#F7DF1E;"></div>
-                <div class="language-segment" style="width:6.2%;background:#CE9178;"></div>
-                <div class="language-segment" style="width:2.6%;background:#E34C26;"></div>
-              </div>
-              <div class="language-list">
-                <div class="language-item"><span class="language-dot" style="background:#F7DF1E;"></span> JavaScript 91.2%</div>
-                <div class="language-item"><span class="language-dot" style="background:#CE9178;"></span> CSS 6.2%</div>
-                <div class="language-item"><span class="language-dot" style="background:#E34C26;"></span> HTML 2.6%</div>
-              </div>
-            </div>
-            <div class="project-icons"><i class="fab fa-js-square"></i><i class="fab fa-react"></i><i class="fab fa-css3-alt"></i></div>
-            <p class="project-desc">A platform that lets users configure and purchase custom PC builds. Includes authentication with login and sign-in forms.</p>
-            <div class="project-btns">
-              <a href="https://github.com/macapagaljoshua123/pcgosite" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
-            </div>
-          </div>
-        </div>
-        <!-- PROJECT 3 -->
-        <div class="project-card">
-          <div class="project-thumb">
-            <img src="edgelink.png" alt="Edgelink" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-link\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
-          </div>
-          <div class="project-info">
-            <p class="project-type">Full-Stack · SaaS</p>
-            <h3 class="project-title">Edgelink Web Application</h3>
-            <p class="project-tech">HTML 88.2% · PHP 11.8%</p>
-            <div class="project-languages">
-              <div class="language-bar">
-                <div class="language-segment" style="width:88.2%;background:#E34C26;"></div>
-                <div class="language-segment" style="width:11.8%;background:#777BB4;"></div>
-              </div>
-              <div class="language-list">
-                <div class="language-item"><span class="language-dot" style="background:#E34C26;"></span> HTML 88.2%</div>
-                <div class="language-item"><span class="language-dot" style="background:#777BB4;"></span> PHP 11.8%</div>
-              </div>
-            </div>
-            <div class="project-icons"><i class="fab fa-js-square"></i><i class="fab fa-css3-alt"></i><i class="fab fa-html5"></i></div>
-            <p class="project-desc">A live collaboration platform with user auth, real-time forms, events, word clouds, and Q&amp;A sessions.</p>
-            <div class="project-btns">
-              <a href="https://github.com/macapagaljoshua123/edgelinkfree" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
-              <a href="http://edgelinkwebapp.great-site.net/?i=1" target="_blank" class="project-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-            </div>
-          </div>
+
+        <!-- PAGINATION CONTROLS -->
+        <div class="pagination-controls">
+          <button class="pagination-btn" id="prevPageBtn" disabled>
+            <i class="fas fa-arrow-left"></i> Prev
+          </button>
+          <span class="page-indicator" id="pageIndicator">Page 1 / 3</span>
+          <button class="pagination-btn" id="nextPageBtn">
+            Next <i class="fas fa-arrow-right"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -775,7 +1010,7 @@
           </div>
         </div>
         <div class="contact-form">
-          <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <form action="https://formspree.io/f/xzdqqbor" method="POST">
             <div class="form-group">
               <label for="name">Your Name</label>
               <input type="text" id="name" name="name" placeholder="e.g. Maria Santos" required />
@@ -814,12 +1049,13 @@
   <!-- ===== SCRIPT ===== -->
   <script>
     (function() {
+      // ----- NAVBAR SCROLL -----
       const navbar = document.getElementById('navbar');
       window.addEventListener('scroll', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 60);
       });
 
-      // Sidebar controls
+      // ----- SIDEBAR -----
       const sidebar = document.getElementById('sidebar');
       const overlay = document.getElementById('sidebarOverlay');
       const hamburger = document.getElementById('hamburger');
@@ -840,12 +1076,9 @@
       hamburger.addEventListener('click', openSidebar);
       closeBtn.addEventListener('click', closeSidebar);
       overlay.addEventListener('click', closeSidebar);
+      sidebarLinks.forEach(link => link.addEventListener('click', closeSidebar));
 
-      sidebarLinks.forEach(link => {
-        link.addEventListener('click', closeSidebar);
-      });
-
-      // Smooth scroll for all anchor links (including sidebar)
+      // ----- SMOOTH SCROLL -----
       document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
           const target = document.querySelector(a.getAttribute('href'));
@@ -855,6 +1088,62 @@
           }
         });
       });
+
+      // ----- PROJECT PAGINATION (3 pages, different projects each) -----
+      const projectsList = document.getElementById('projectsList');
+      const allProjectCards = projectsList.querySelectorAll('.project-card');
+      const prevBtn = document.getElementById('prevPageBtn');
+      const nextBtn = document.getElementById('nextPageBtn');
+      const pageIndicator = document.getElementById('pageIndicator');
+
+      // Group cards by page (3 cards per page)
+      const projectsPerPage = 3;
+      const totalPages = Math.ceil(allProjectCards.length / projectsPerPage);
+      let currentPage = 1;
+
+      function showPage(page) {
+        // Hide all cards first
+        allProjectCards.forEach(card => {
+          card.style.display = 'none';
+        });
+
+        // Show cards for current page
+        const startIndex = (page - 1) * projectsPerPage;
+        const endIndex = Math.min(startIndex + projectsPerPage, allProjectCards.length);
+        for (let i = startIndex; i < endIndex; i++) {
+          allProjectCards[i].style.display = 'grid';
+        }
+
+        // Update pagination controls
+        pageIndicator.textContent = `Page ${page} / ${totalPages}`;
+        prevBtn.disabled = page === 1;
+        nextBtn.disabled = page === totalPages;
+
+        // Fade animation
+        projectsList.classList.add('fade');
+        setTimeout(() => {
+          projectsList.classList.remove('fade');
+        }, 300);
+      }
+
+      prevBtn.addEventListener('click', () => {
+        if (currentPage > 1) {
+          currentPage--;
+          showPage(currentPage);
+          document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+
+      nextBtn.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          showPage(currentPage);
+          document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+
+      // Initial page setup - show page 1
+      showPage(1);
     })();
   </script>
 
