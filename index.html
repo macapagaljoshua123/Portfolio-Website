@@ -113,7 +113,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.2rem 2rem;
+      padding: 1.2rem 3rem;
       background: transparent;
       transition: background 300ms, backdrop-filter 300ms;
     }
@@ -124,8 +124,8 @@
     }
     .nav-brand {
       font-family: 'Playfair Display', serif;
-      font-size: 1.15rem;
-      color: #22ccf7;
+      font-size: 1.3rem;
+      color: #fff;
       font-weight: 700;
       letter-spacing: 0.01em;
       white-space: nowrap;
@@ -138,9 +138,9 @@
       align-items: center;
     }
     .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-muted);
       transition: color 200ms;
@@ -151,7 +151,7 @@
       content: '';
       position: absolute;
       bottom: -2px; left: 0;
-      width: 0; height: 1px;
+      width: 0; height: 2px;
       background: var(--accent);
       transition: width 300ms;
     }
@@ -183,21 +183,23 @@
       position: relative;
       height: 100vh;
       overflow: hidden;
+      background: radial-gradient(circle at 30% 30%, #1a2a3a, #0a0f14);
     }
     .hero-photo-panel img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center top;
+      object-position: center 0%;
       display: block;
       -webkit-mask-image: linear-gradient(to right, black 55%, transparent 100%);
       mask-image: linear-gradient(to right, black 55%, transparent 100%);
+      filter: saturate(1.1) contrast(1.05);
     }
     .hero-photo-panel::after {
       content: '';
       position: absolute;
       bottom: 0; left: 0; right: 0;
-      height: 35%;
+      height: 40%;
       background: linear-gradient(to top, var(--dark) 0%, transparent 100%);
       pointer-events: none;
     }
@@ -205,7 +207,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 7rem 5rem 4rem 3rem;
+      padding: 7rem 5rem 4rem 4rem;
       background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
       position: relative;
       z-index: 2;
@@ -214,16 +216,16 @@
       content: '';
       position: absolute; inset: 0;
       background: url('https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Stars.svg?sanitize=true');
-      opacity: 0.25;
+      opacity: 0.2;
       pointer-events: none;
     }
     .hero-eyebrow {
-      font-size: 0.78rem;
-      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--accent);
       font-weight: 600;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.5rem;
       position: relative;
       display: flex; align-items: center; gap: 0.8rem;
       opacity: 0;
@@ -232,14 +234,15 @@
     .hero-eyebrow::before {
       content: '';
       display: inline-block;
-      width: 32px; height: 1px;
+      width: 40px; height: 2px;
       background: var(--accent);
+      border-radius: 2px;
     }
     .hero-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+      font-size: clamp(2.8rem, 5vw, 4.6rem);
       color: #fff;
-      line-height: 1.12;
+      line-height: 1.08;
       margin-bottom: 1.6rem;
       position: relative;
       opacity: 0;
@@ -247,44 +250,45 @@
     }
     .hero-title em { color: var(--accent); font-style: italic; }
     .hero-subtitle {
-      font-size: 0.97rem;
+      font-size: 1rem;
       color: var(--text-muted);
       line-height: 1.8;
-      max-width: 420px;
-      margin-bottom: 2.5rem;
+      max-width: 480px;
+      margin-bottom: 2.8rem;
       position: relative;
       opacity: 0;
       animation: fadeUp 0.7s 0.5s forwards;
     }
     .hero-btns {
-      display: flex; gap: 1rem; flex-wrap: wrap;
+      display: flex; gap: 1.2rem; flex-wrap: wrap;
       position: relative;
       opacity: 0;
       animation: fadeUp 0.7s 0.65s forwards;
     }
     .btn {
-      padding: 0.75rem 1.8rem;
-      font-size: 0.84rem;
+      padding: 0.85rem 2.2rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      border-radius: 4px;
-      transition: all 200ms;
+      border-radius: 6px;
+      transition: all 250ms;
       cursor: pointer;
-      display: inline-flex; align-items: center; gap: 0.5rem;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      border: 1px solid transparent;
     }
     .btn-primary {
       background: var(--accent);
       color: var(--dark);
-      border: 1px solid var(--accent);
+      border-color: var(--accent);
     }
-    .btn-primary:hover { background: transparent; color: var(--accent); }
+    .btn-primary:hover { background: transparent; color: var(--accent); box-shadow: 0 0 16px rgba(34,204,247,0.2); }
     .btn-outline {
       background: transparent;
       color: var(--light);
-      border: 1px solid var(--border);
+      border-color: var(--border);
     }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); background: rgba(34,204,247,0.04); }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
@@ -293,11 +297,11 @@
 
     /* ===== SECTIONS ===== */
     .section { padding: 6rem 2rem; }
-    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
     .section-header { text-align: center; margin-bottom: 4rem; }
     .section-label {
       font-size: 0.75rem;
-      letter-spacing: 0.18em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--accent);
       font-weight: 600;
@@ -305,12 +309,12 @@
     }
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-size: clamp(2rem, 3.5vw, 3rem);
       color: #fff;
       margin-bottom: 0.8rem;
     }
     .section-divider {
-      width: 48px; height: 2px;
+      width: 56px; height: 2px;
       background: linear-gradient(90deg, var(--accent), var(--accent2));
       margin: 1rem auto 0;
       border-radius: 2px;
@@ -326,39 +330,39 @@
     .about-card {
       background: var(--dark);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 2rem;
-      transition: border-color 300ms, transform 300ms;
+      transition: border-color 300ms, transform 300ms, box-shadow 300ms;
     }
-    .about-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .about-card:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: 0 12px 24px -12px rgba(0,0,0,0.6); }
     .about-card-icon {
-      width: 48px; height: 48px;
-      border-radius: 10px;
+      width: 52px; height: 52px;
+      border-radius: 12px;
       background: rgba(34,204,247,0.1);
       display: flex; align-items: center; justify-content: center;
       margin-bottom: 1.2rem;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: var(--accent);
     }
-    .about-card h4 { font-size: 1.05rem; font-weight: 600; color: #fff; margin-bottom: 0.8rem; }
+    .about-card h4 { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 0.8rem; }
     .about-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; }
     .about-intro {
       grid-column: span 2;
       background: var(--dark);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
+      border-radius: 16px;
+      padding: 2.5rem;
     }
-    .about-intro p { font-size: 0.95rem; color: var(--text); line-height: 1.85; margin-bottom: 1rem; }
+    .about-intro p { font-size: 1rem; color: var(--text); line-height: 1.9; margin-bottom: 1rem; }
     .about-intro p:last-child { margin-bottom: 0; }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; }
     .skill-tag {
-      font-size: 0.75rem; padding: 0.3rem 0.8rem;
+      font-size: 0.75rem; padding: 0.3rem 1rem;
       border-radius: 100px; border: 1px solid var(--border);
       color: var(--text-muted); font-weight: 500;
-      transition: border-color 200ms, color 200ms;
+      transition: border-color 200ms, color 200ms, background 200ms;
     }
-    .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent); background: rgba(34,204,247,0.04); }
 
     /* PROJECTS */
     #projects { background: var(--dark); }
@@ -376,36 +380,37 @@
     }
     .project-card {
       display: grid;
-      grid-template-columns: 200px 1fr;
+      grid-template-columns: 220px 1fr;
       gap: 2rem;
       background: var(--dark2);
       border: 1px solid var(--border);
-      border-radius: 12px;
+      border-radius: 16px;
       padding: 2rem;
-      transition: border-color 300ms, transform 300ms;
+      transition: border-color 300ms, transform 300ms, box-shadow 300ms;
     }
-    .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 24px -12px rgba(0,0,0,0.5); }
     .project-thumb {
       width: 100%; aspect-ratio: 1;
-      border-radius: 8px;
+      border-radius: 12px;
       overflow: hidden;
       background: var(--dark);
       display: flex; align-items: center; justify-content: center;
+      border: 1px solid var(--border);
     }
     .project-thumb img {
       width: 100%; height: 100%;
       object-fit: cover;
       filter: grayscale(30%);
-      transition: filter 300ms, transform 300ms;
+      transition: filter 400ms, transform 400ms;
     }
-    .project-card:hover .project-thumb img { filter: none; transform: scale(1.04); }
+    .project-card:hover .project-thumb img { filter: none; transform: scale(1.05); }
     .project-info { display: flex; flex-direction: column; justify-content: center; }
     .project-type {
-      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--accent); font-weight: 600; margin-bottom: 0.5rem;
     }
-    .project-title { font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.6rem; }
-    .project-tech { font-size: 0.78rem; color: var(--text-muted); font-style: italic; margin-bottom: 0.8rem; }
+    .project-title { font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 0.4rem; }
+    .project-tech { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-bottom: 0.8rem; }
     .project-languages { margin: 1rem 0; font-size: 0.75rem; color: var(--text-muted); }
     .language-bar {
       display: flex;
@@ -413,18 +418,18 @@
       border-radius: 100px;
       overflow: hidden;
       background: var(--border);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
     }
     .language-segment { height: 100%; transition: opacity 200ms; }
     .language-list { display: flex; flex-wrap: wrap; gap: 1rem; }
     .language-item { display: flex; align-items: center; gap: 0.4rem; }
     .language-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
     .project-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.2rem; }
-    .project-icons { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 0.8rem; display: flex; gap: 0.5rem; }
+    .project-icons { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 0.8rem; display: flex; gap: 0.6rem; }
     .project-btns { display: flex; gap: 0.8rem; flex-wrap: wrap; }
     .project-btn {
       padding: 0.5rem 1.2rem; font-size: 0.8rem; font-weight: 500;
-      border-radius: 4px; border: 1px solid var(--border);
+      border-radius: 6px; border: 1px solid var(--border);
       color: var(--text); background: transparent; transition: all 200ms;
       display: inline-flex; align-items: center; gap: 0.4rem;
     }
@@ -443,8 +448,8 @@
       background: transparent;
       border: 1px solid var(--border);
       color: var(--text-muted);
-      padding: 0.6rem 1.4rem;
-      border-radius: 6px;
+      padding: 0.6rem 1.6rem;
+      border-radius: 8px;
       font-size: 0.85rem;
       font-weight: 500;
       cursor: pointer;
@@ -466,7 +471,7 @@
       color: var(--text-muted);
       font-size: 0.9rem;
       font-weight: 500;
-      min-width: 90px;
+      min-width: 100px;
       text-align: center;
     }
 
@@ -480,60 +485,69 @@
     }
     .contact-info h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.5rem; color: #fff; margin-bottom: 1rem;
+      font-size: 1.6rem; color: #fff; margin-bottom: 1rem;
     }
-    .contact-info p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem; }
+    .contact-info p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem; }
     .contact-detail {
       display: flex; align-items: center; gap: 0.8rem;
-      margin-bottom: 0.9rem; font-size: 0.88rem; color: var(--text-muted);
+      margin-bottom: 0.9rem; font-size: 0.9rem; color: var(--text-muted);
     }
     .contact-detail i {
-      width: 32px; height: 32px; border-radius: 8px;
+      width: 36px; height: 36px; border-radius: 10px;
       background: rgba(34,204,247,0.1);
       display: flex; align-items: center; justify-content: center;
-      color: var(--accent); font-size: 0.85rem;
+      color: var(--accent); font-size: 0.9rem;
       flex-shrink: 0;
     }
-    .social-row { display: flex; gap: 0.8rem; margin-top: 1.5rem; }
+    .social-row {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
     .social-btn {
-      width: 40px; height: 40px; border-radius: 8px;
+      width: 44px; height: 44px; border-radius: 10px;
       border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
-      color: var(--text-muted); font-size: 0.9rem; transition: all 200ms;
+      color: var(--text-muted); font-size: 1rem; transition: all 200ms;
     }
-    .social-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(34,204,247,0.08); }
+    .social-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(34,204,247,0.08);
+    }
     .contact-form {
       background: var(--dark);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 2rem;
+      border-radius: 16px;
+      padding: 2.5rem;
     }
     .form-group { margin-bottom: 1.2rem; }
     .form-group label {
-      display: block; font-size: 0.8rem; font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase;
+      display: block; font-size: 0.75rem; font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
       color: var(--text-muted); margin-bottom: 0.4rem;
     }
     .form-group input, .form-group textarea {
       width: 100%; padding: 0.8rem 1rem;
       background: var(--dark2); border: 1px solid var(--border);
-      border-radius: 6px; color: var(--light);
+      border-radius: 8px; color: var(--light);
       font-family: 'Inter', sans-serif; font-size: 0.9rem;
-      transition: border-color 200ms; outline: none;
+      transition: border-color 200ms, box-shadow 200ms; outline: none;
     }
-    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(34,204,247,0.1); }
     .form-group textarea { min-height: 130px; resize: vertical; }
     .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text-muted); }
     .form-submit {
-      width: 100%; padding: 0.85rem;
+      width: 100%; padding: 0.9rem;
       background: var(--accent); color: var(--dark);
-      border: none; border-radius: 6px;
-      font-family: 'Inter', sans-serif; font-size: 0.88rem;
-      font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      border: none; border-radius: 8px;
+      font-family: 'Inter', sans-serif; font-size: 0.85rem;
+      font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
       cursor: pointer; transition: all 200ms;
       display: flex; align-items: center; justify-content: center; gap: 0.5rem;
     }
-    .form-submit:hover { background: #fff; }
+    .form-submit:hover { background: #fff; box-shadow: 0 4px 16px rgba(34,204,247,0.3); }
     .form-note { font-size: 0.75rem; color: var(--text-muted); text-align: center; margin-top: 0.8rem; }
 
     /* FOOTER */
@@ -553,6 +567,10 @@
     footer .footer-links a:hover { color: var(--accent); }
 
     /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      #navbar { padding: 1.2rem 2rem; }
+      .hero-text-panel { padding: 5rem 3rem 3rem 3rem; }
+    }
     @media (max-width: 900px) {
       #welcome-section {
         grid-template-columns: 1fr;
@@ -719,9 +737,8 @@
       </div>
 
       <div class="projects-wrapper">
-        <!-- PROJECTS LIST - Each page has different projects -->
         <div class="projects-list" id="projectsList">
-          <!-- ===== PAGE 1 PROJECTS (Default visible) ===== -->
+          <!-- ===== PAGE 1 ===== -->
           <div class="project-card">
             <div class="project-thumb">
               <img src="ai-assistant.png" alt="AI Search API" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-robot\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
@@ -807,14 +824,14 @@
             </div>
           </div>
 
-          <!-- ===== PAGE 2 PROJECTS (hidden by default) ===== -->
+          <!-- ===== PAGE 2 ===== -->
           <div class="project-card" style="display:none;">  
             <div class="project-thumb">
               <img src="image.png" alt="Project 4" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-code\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
             </div>
             <div class="project-info">
-              <p class="project-type">Web App · Reactjs + Puppeteerjs +  FASTAPI Python</p>
-              <h3 class="project-title">HelloFlying Finding Cheapest Flight</h3>
+              <p class="project-type">Web App · React + Puppeteer + FastAPI</p>
+              <h3 class="project-title">HelloFlying — Cheapest Flights</h3>
               <p class="project-tech">React 54.4% · CSS 31.2% · Python 16.5%</p>
               <div class="project-languages">
                 <div class="language-bar">
@@ -823,7 +840,7 @@
                   <div class="language-segment" style="width:16.5%;background:#3572A5;"></div>
                 </div>
                 <div class="language-list">
-                  <div class="language-item"><span class="language-dot" style="background:#eeff00;"></span> Javascript 54.4%</div>
+                  <div class="language-item"><span class="language-dot" style="background:#eeff00;"></span> JavaScript 54.4%</div>
                   <div class="language-item"><span class="language-dot" style="background:#CE9178;"></span> CSS 31.2%</div>
                   <div class="language-item"><span class="language-dot" style="background:#3572A5;"></span> Python 16.5%</div>
                 </div>
@@ -853,7 +870,7 @@
                 </div>
               </div>
               <div class="project-icons"><i class="fab fa-python"></i></div>
-              <p class="project-desc">A Windows Application that for School Universities, Service Request Module, Booking and Reservation Module, Reporting and Tracking Module,  </p>
+              <p class="project-desc">A Windows application for universities: Service Request, Booking & Reservation, Reporting & Tracking modules.</p>
               <div class="project-btns">
                 <a href="https://github.com/macapagaljoshua123/UniHubSystem" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
               </div>
@@ -881,14 +898,14 @@
                 </div>
               </div>
               <div class="project-icons"><i class="fab fa-node-js"></i><i class="fab fa-python"></i><i class="fas fa-database"></i></div>
-              <p class="project-desc"></p>
+              <p class="project-desc">A scalable backend service currently in active development.</p>
               <div class="project-btns">
                 <a href="#" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
               </div>
             </div>
           </div>
 
-          <!-- ===== PAGE 3 PROJECTS (hidden by default) ===== -->
+          <!-- ===== PAGE 3 ===== -->
           <div class="project-card" style="display:none;">
             <div class="project-thumb">
               <img src="project7.png" alt="Project 7" onerror="this.style.display='none';this.parentElement.innerHTML='<i class=\'fas fa-chart-line\'style=\'font-size:3rem;color:#22ccf7;\'></i>'" />
@@ -910,7 +927,7 @@
                 </div>
               </div>
               <div class="project-icons"><i class="fab fa-vuejs"></i><i class="fas fa-chart-pie"></i><i class="fab fa-css3-alt"></i></div>
-              <p class="project-desc"></p>
+              <p class="project-desc">An interactive dashboard with advanced data visualizations.</p>
               <div class="project-btns">
                 <a href="#" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
                 <a href="#" target="_blank" class="project-btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
@@ -939,7 +956,7 @@
                 </div>
               </div>
               <div class="project-icons"><i class="fab fa-python"></i><i class="fas fa-terminal"></i><i class="fas fa-cloud"></i></div>
-              <p class="project-desc"></p>
+              <p class="project-desc">Infrastructure automation and deployment pipelines.</p>
               <div class="project-btns">
                 <a href="#" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
               </div>
@@ -965,7 +982,7 @@
                 </div>
               </div>
               <div class="project-icons"><i class="fas fa-gamepad"></i><i class="fab fa-unity"></i></div>
-              <p class="project-desc"></p>
+              <p class="project-desc">A 2D platformer game with unique mechanics.</p>
               <div class="project-btns">
                 <a href="#" target="_blank" class="project-btn"><i class="fab fa-github"></i> Source Code</a>
                 <a href="#" target="_blank" class="project-btn"><i class="fas fa-external-link-alt"></i> Play Demo</a>
@@ -974,7 +991,7 @@
           </div>
         </div>
 
-        <!-- PAGINATION CONTROLS -->
+        <!-- PAGINATION -->
         <div class="pagination-controls">
           <button class="pagination-btn" id="prevPageBtn" disabled>
             <i class="fas fa-arrow-left"></i> Prev
@@ -1001,8 +1018,12 @@
           <h3>Have a project in mind?</h3>
           <p>Whether it's a new web app, a design project, or just a question — I'd love to hear from you. Fill out the form and I'll get back to you soon.</p>
           <div class="contact-detail"><i class="fas fa-envelope"></i><span>joshuamacapagal0409@gmail.com</span></div>
-          <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><span>0611 Norberto Street San Jose San Miguel Bulacan 3011 Philippines</span></div>
+          <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><span>Philippines</span></div>
+          
+          <!-- Social Links: Facebook, Instagram, WhatsApp, GitHub, CodePen -->
           <div class="social-row">
+            <a href="https://www.facebook.com/joshua.macapagal.56884" target="_blank" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/owawershshshs?brid=YWdncwGFRszB2D0XNnGhMlG_2bve" target="_blank" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="https://github.com/macapagaljoshua123" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
             <a href="https://codepen.io/macapagaljoshua123" target="_blank" class="social-btn" title="CodePen"><i class="fab fa-codepen"></i></a>
           </div>
@@ -1087,37 +1108,32 @@
         });
       });
 
-      // ----- PROJECT PAGINATION (3 pages, different projects each) -----
+      // ----- PROJECT PAGINATION -----
       const projectsList = document.getElementById('projectsList');
       const allProjectCards = projectsList.querySelectorAll('.project-card');
       const prevBtn = document.getElementById('prevPageBtn');
       const nextBtn = document.getElementById('nextPageBtn');
       const pageIndicator = document.getElementById('pageIndicator');
 
-      // Group cards by page (3 cards per page)
       const projectsPerPage = 3;
       const totalPages = Math.ceil(allProjectCards.length / projectsPerPage);
       let currentPage = 1;
 
       function showPage(page) {
-        // Hide all cards first
         allProjectCards.forEach(card => {
           card.style.display = 'none';
         });
 
-        // Show cards for current page
         const startIndex = (page - 1) * projectsPerPage;
         const endIndex = Math.min(startIndex + projectsPerPage, allProjectCards.length);
         for (let i = startIndex; i < endIndex; i++) {
           allProjectCards[i].style.display = 'grid';
         }
 
-        // Update pagination controls
         pageIndicator.textContent = `Page ${page} / ${totalPages}`;
         prevBtn.disabled = page === 1;
         nextBtn.disabled = page === totalPages;
 
-        // Fade animation
         projectsList.classList.add('fade');
         setTimeout(() => {
           projectsList.classList.remove('fade');
@@ -1140,10 +1156,8 @@
         }
       });
 
-      // Initial page setup - show page 1
       showPage(1);
     })();
   </script>
-
 </body>
 </html>
