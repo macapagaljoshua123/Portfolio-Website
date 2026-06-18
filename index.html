@@ -191,9 +191,10 @@
       object-fit: cover;
       object-position: center 0%;
       display: block;
-      -webkit-mask-image: linear-gradient(to right, black 55%, transparent 100%);
-      mask-image: linear-gradient(to right, black 55%, transparent 100%);
       filter: saturate(1.1) contrast(1.05);
+      /* Brush / gradient transparent mask for a soft edge */
+      -webkit-mask-image: radial-gradient(ellipse at 60% 50%, black 55%, transparent 90%);
+      mask-image: radial-gradient(ellipse at 60% 50%, black 55%, transparent 90%);
     }
     .hero-photo-panel::after {
       content: '';
@@ -499,23 +500,6 @@
       color: var(--accent); font-size: 0.9rem;
       flex-shrink: 0;
     }
-    .social-row {
-      display: flex;
-      gap: 0.8rem;
-      margin-top: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .social-btn {
-      width: 44px; height: 44px; border-radius: 10px;
-      border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-muted); font-size: 1rem; transition: all 200ms;
-    }
-    .social-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(34,204,247,0.08);
-    }
     .contact-form {
       background: var(--dark);
       border: 1px solid var(--border);
@@ -554,7 +538,7 @@
     footer {
       background: var(--dark);
       border-top: 1px solid var(--border);
-      padding: 2rem 4rem;
+      padding: 1.8rem 4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -562,9 +546,27 @@
       gap: 1rem;
     }
     footer p { font-size: 0.8rem; color: var(--text-muted); }
-    footer .footer-links { display: flex; gap: 1.5rem; }
-    footer .footer-links a { font-size: 0.8rem; color: var(--text-muted); transition: color 200ms; }
-    footer .footer-links a:hover { color: var(--accent); }
+    .footer-social {
+      display: flex;
+      gap: 0.8rem;
+    }
+    .footer-social .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      transition: all 200ms;
+    }
+    .footer-social .social-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(34,204,247,0.08);
+    }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 1024px) {
@@ -581,8 +583,8 @@
       }
       .hero-photo-panel img {
         object-position: center 10%;
-        -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-        mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+        -webkit-mask-image: radial-gradient(ellipse at 50% 60%, black 50%, transparent 85%);
+        mask-image: radial-gradient(ellipse at 50% 60%, black 50%, transparent 85%);
       }
       .hero-photo-panel::after { display: none; }
       .hero-text-panel {
@@ -608,7 +610,7 @@
       .contact-grid { grid-template-columns: 1fr; }
 
       footer { padding: 1.5rem; flex-direction: column; text-align: center; }
-      footer .footer-links { flex-wrap: wrap; justify-content: center; }
+      .footer-social { justify-content: center; }
 
       .pagination-controls { gap: 0.8rem; flex-wrap: wrap; }
     }
@@ -1019,14 +1021,6 @@
           <p>Whether it's a new web app, a design project, or just a question — I'd love to hear from you. Fill out the form and I'll get back to you soon.</p>
           <div class="contact-detail"><i class="fas fa-envelope"></i><span>joshuamacapagal0409@gmail.com</span></div>
           <div class="contact-detail"><i class="fas fa-map-marker-alt"></i><span>Philippines</span></div>
-          
-          <!-- Social Links: Facebook, Instagram, WhatsApp, GitHub, CodePen -->
-          <div class="social-row">
-            <a href="https://www.facebook.com/joshua.macapagal.56884" target="_blank" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/owawershshshs?brid=YWdncwGFRszB2D0XNnGhMlG_2bve" target="_blank" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/macapagaljoshua123" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://codepen.io/macapagaljoshua123" target="_blank" class="social-btn" title="CodePen"><i class="fab fa-codepen"></i></a>
-          </div>
         </div>
         <div class="contact-form">
           <form action="https://formspree.io/f/xzdqqbor" method="POST">
@@ -1057,11 +1051,11 @@
   <!-- ===== FOOTER ===== -->
   <footer>
     <p>&copy; 2026 Joshua L. Macapagal. All rights reserved.</p>
-    <div class="footer-links">
-      <a href="#welcome-section">Home</a>
-      <a href="#about">About</a>
-      <a href="#projects">Portfolio</a>
-      <a href="#contact">Contact</a>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/joshua.macapagal.56884" target="_blank" class="social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/owawershshshs?brid=YWdncwGFRszB2D0XNnGhMlG_2bve" target="_blank" class="social-btn" title="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/macapagaljoshua123" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="https://codepen.io/macapagaljoshua123" target="_blank" class="social-btn" title="CodePen"><i class="fab fa-codepen"></i></a>
     </div>
   </footer>
 
