@@ -144,7 +144,6 @@
     "assets/img/Avatar Pic 1.jpg",
     "assets/img/Avatar Pic 2.jpg",
     "assets/img/Avatar Pic 3.jpg",
-    "assets/img/Avatar Pic 4.jpg",
   ];
 
   const SLIDE_INTERVAL = 5000; // every 5 seconds
