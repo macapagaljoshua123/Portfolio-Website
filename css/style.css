@@ -1278,3 +1278,30 @@ footer p {
     opacity: 0;
   }
 }
+/* ===== SCROLL REVEAL - Additional Stagger ===== */
+/* Add staggered delays for cards inside grids */
+
+.about-card:nth-child(2) { transition-delay: 0.1s; }
+.about-card:nth-child(3) { transition-delay: 0.2s; }
+.about-card:nth-child(4) { transition-delay: 0.3s; }
+
+.contact-form-wrap { transition-delay: 0.1s; }
+.contact-info { transition-delay: 0.2s; }
+
+/* Project card inner - reset any conflicting styles */
+.project-card-inner {
+  /* The JS will handle the animation, but ensure it starts hidden */
+  opacity: 1; /* default, JS will override */
+  transform: none; /* default, JS will override */
+}
+
+/* Ensure smooth transitions for all animated elements */
+.hero-text-panel,
+.about-intro,
+.about-card,
+.project-card,
+.contact-form-wrap,
+.contact-info,
+.project-card-inner {
+  will-change: transform, opacity;
+}
