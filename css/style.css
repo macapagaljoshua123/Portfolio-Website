@@ -24,7 +24,7 @@ body {
   background: var(--dark);
   color: var(--text);
   font-family: "Inter", sans-serif;
-  font-size: 18px; /* Increased from 17px */
+  font-size: 18px;
   overflow-x: hidden;
   line-height: 1.7;
 }
@@ -133,7 +133,7 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 4rem; /* Increased padding for larger displays */
+  padding: 1.5rem 4rem;
   background: transparent;
   transition:
     background 300ms,
@@ -146,7 +146,7 @@ a:hover {
 }
 .nav-brand {
   font-family: "Playfair Display", serif;
-  font-size: 1.5rem; /* Increased */
+  font-size: 1.5rem;
   color: #fff;
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -158,12 +158,12 @@ a:hover {
 }
 .nav-links {
   display: flex;
-  gap: 3rem; /* Increased */
+  gap: 3rem;
   list-style: none;
   align-items: center;
 }
 .nav-links a {
-  font-size: 0.9rem; /* Increased */
+  font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -252,7 +252,6 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* Increased padding massively to eliminate dead space on 100% scale displays */
   padding: clamp(5rem, 10vh, 8rem) clamp(4rem, 8vw, 8rem);
   background: linear-gradient(135deg, #0d1117 0%, #161b22 100%);
   position: relative;
@@ -267,7 +266,7 @@ a:hover {
   pointer-events: none;
 }
 .hero-eyebrow {
-  font-size: 1.1rem; /* Increased */
+  font-size: 1.1rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent);
@@ -283,7 +282,6 @@ a:hover {
 }
 .hero-title {
   font-family: "Playfair Display", serif;
-  /* Increased font size limits */
   font-size: clamp(3rem, 5.5vw, 4.5rem);
   color: #fff;
   line-height: 1.1;
@@ -297,10 +295,9 @@ a:hover {
   font-style: italic;
 }
 .hero-subtitle {
-  font-size: 1.1rem; /* Increased */
+  font-size: 1.1rem;
   color: var(--text-muted);
   line-height: 1.8;
-  /* Increased max width so it fills the right side panel */
   max-width: 650px;
   margin-bottom: 2.5rem;
   position: relative;
@@ -317,8 +314,8 @@ a:hover {
   animation: fadeUp 0.7s 0.65s forwards;
 }
 .btn {
-  padding: 1rem 2.5rem; /* Increased */
-  font-size: 0.9rem; /* Increased */
+  padding: 1rem 2.5rem;
+  font-size: 0.9rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -364,10 +361,10 @@ a:hover {
 
 /* ===== SECTIONS ===== */
 .section {
-  padding: 7rem 4rem; /* Increased top/bottom and left/right padding */
+  padding: 7rem 4rem;
 }
 .section-inner {
-  max-width: 1500px; /* Increased from 1200px to remove dead space */
+  max-width: 1500px;
   margin: 0 auto;
 }
 .section-header {
@@ -375,7 +372,7 @@ a:hover {
   margin-bottom: 4rem;
 }
 .section-label {
-  font-size: 0.85rem; /* Increased */
+  font-size: 0.85rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
@@ -384,7 +381,7 @@ a:hover {
 }
 .section-title {
   font-family: "Playfair Display", serif;
-  font-size: clamp(2.2rem, 4vw, 3rem); /* Increased */
+  font-size: clamp(2.2rem, 4vw, 3rem);
   color: #fff;
   margin-bottom: 0.8rem;
 }
@@ -403,13 +400,13 @@ a:hover {
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2.5rem; /* Increased */
+  gap: 2.5rem;
 }
 .about-card {
   background: var(--dark);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 2.5rem; /* Increased */
+  padding: 2.5rem;
   transition:
     border-color 300ms,
     transform 300ms,
@@ -421,7 +418,7 @@ a:hover {
   box-shadow: 0 12px 24px -12px rgba(0, 0, 0, 0.6);
 }
 .about-card-icon {
-  width: 56px; /* Increased */
+  width: 56px;
   height: 56px;
   border-radius: 12px;
   background: rgba(34, 204, 247, 0.1);
@@ -429,17 +426,17 @@ a:hover {
   align-items: center;
   justify-content: center;
   margin-bottom: 1.2rem;
-  font-size: 1.5rem; /* Increased */
+  font-size: 1.5rem;
   color: var(--accent);
 }
 .about-card h4 {
-  font-size: 1.3rem; /* Increased */
+  font-size: 1.3rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 0.8rem;
 }
 .about-card p {
-  font-size: 1rem; /* Increased */
+  font-size: 1rem;
   color: var(--text-muted);
   line-height: 1.7;
   text-align: justify;
@@ -449,10 +446,10 @@ a:hover {
   background: var(--dark);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 3rem; /* Increased */
+  padding: 3rem;
 }
 .about-intro p {
-  font-size: 1.1rem; /* Increased */
+  font-size: 1.1rem;
   color: var(--text);
   line-height: 1.8;
   margin-bottom: 1rem;
@@ -468,8 +465,8 @@ a:hover {
   margin-top: 1.2rem;
 }
 .skill-tag {
-  font-size: 0.85rem; /* Increased */
-  padding: 0.4rem 1.2rem; /* Increased */
+  font-size: 0.85rem;
+  padding: 0.4rem 1.2rem;
   border-radius: 100px;
   border: 1px solid var(--border);
   color: var(--text-muted);
@@ -488,7 +485,7 @@ a:hover {
 }
 .projects-wrapper {
   position: relative;
-  max-width: 1500px; /* Increased */
+  max-width: 1500px;
   margin: 0 auto;
 }
 
@@ -511,19 +508,18 @@ a:hover {
 
 .project-card-inner {
   display: grid;
-  grid-template-columns: 300px 1fr; /* Increased image column */
-  gap: 3rem; /* Increased */
+  grid-template-columns: 300px 1fr;
+  gap: 3rem;
   background: var(--dark2);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 3rem; /* Increased */
+  padding: 3rem;
   transition:
     border-color 300ms,
     transform 300ms,
     box-shadow 300ms;
   height: 100%;
   position: relative;
-  /* Increased max width to remove dead space on large screens */
   max-width: 1300px;
   width: 100%;
   margin: 0 auto;
@@ -563,7 +559,7 @@ a:hover {
   justify-content: center;
 }
 .project-type {
-  font-size: 0.8rem; /* Increased */
+  font-size: 0.8rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--accent);
@@ -571,25 +567,25 @@ a:hover {
   margin-bottom: 0.5rem;
 }
 .project-title {
-  font-size: 1.8rem; /* Increased */
+  font-size: 1.8rem;
   font-weight: 700;
   color: #fff;
   margin-bottom: 0.5rem;
 }
 .project-tech {
-  font-size: 0.9rem; /* Increased */
+  font-size: 0.9rem;
   color: var(--text-muted);
   font-style: italic;
   margin-bottom: 0.8rem;
 }
 .project-languages {
   margin: 1.2rem 0;
-  font-size: 0.85rem; /* Increased */
+  font-size: 0.85rem;
   color: var(--text-muted);
 }
 .language-bar {
   display: flex;
-  height: 10px; /* Increased */
+  height: 10px;
   border-radius: 100px;
   overflow: hidden;
   background: var(--border);
@@ -610,20 +606,20 @@ a:hover {
   gap: 0.4rem;
 }
 .language-dot {
-  width: 12px; /* Increased */
+  width: 12px;
   height: 12px;
   border-radius: 50%;
   display: inline-block;
 }
 .project-desc {
-  font-size: 1.05rem; /* Increased */
+  font-size: 1.05rem;
   color: var(--text-muted);
   line-height: 1.7;
   margin-bottom: 1.5rem;
   text-align: justify;
 }
 .project-icons {
-  font-size: 1.4rem; /* Increased */
+  font-size: 1.4rem;
   color: var(--text-muted);
   margin-bottom: 0.8rem;
   display: flex;
@@ -635,8 +631,8 @@ a:hover {
   flex-wrap: wrap;
 }
 .project-btn {
-  padding: 0.7rem 1.6rem; /* Increased */
-  font-size: 0.95rem; /* Increased */
+  padding: 0.7rem 1.6rem;
+  font-size: 0.95rem;
   font-weight: 500;
   border-radius: 6px;
   border: 1px solid var(--border);
@@ -663,10 +659,10 @@ a:hover {
   backdrop-filter: blur(6px);
   border: 1px solid var(--border);
   color: var(--accent);
-  width: 56px; /* Increased */
+  width: 56px;
   height: 56px;
   border-radius: 50%;
-  font-size: 1.3rem; /* Increased */
+  font-size: 1.3rem;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -727,7 +723,7 @@ a:hover {
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: stretch;
-  max-width: 1300px; /* Increased */
+  max-width: 1300px;
   margin: 0 auto;
 }
 .contact-info {
@@ -740,18 +736,18 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.7rem 1.4rem; /* Increased */
+  padding: 0.7rem 1.4rem;
   background: rgba(34, 204, 247, 0.08);
   border: 1px solid rgba(34, 204, 247, 0.25);
   border-radius: 100px;
-  font-size: 0.9rem; /* Increased */
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--accent);
   width: fit-content;
   letter-spacing: 0.02em;
 }
 .status-dot {
-  width: 10px; /* Increased */
+  width: 10px;
   height: 10px;
   border-radius: 50%;
   background: #22ccf7;
@@ -771,7 +767,7 @@ a:hover {
 }
 .contact-info h3 {
   font-family: "Playfair Display", serif;
-  font-size: 2.5rem; /* Increased */
+  font-size: 2.5rem;
   color: #fff;
   line-height: 1.2;
   margin: 0;
@@ -784,7 +780,7 @@ a:hover {
   font-style: italic;
 }
 .contact-info > p {
-  font-size: 1.05rem; /* Increased */
+  font-size: 1.05rem;
   color: var(--text-muted);
   line-height: 1.8;
   margin: 0;
@@ -794,13 +790,13 @@ a:hover {
 .contact-cards {
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Increased */
+  gap: 1rem;
 }
 .contact-card {
   display: flex;
   align-items: center;
-  gap: 1.2rem; /* Increased */
-  padding: 1.2rem 1.5rem; /* Increased */
+  gap: 1.2rem;
+  padding: 1.2rem 1.5rem;
   background: var(--dark);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -813,7 +809,7 @@ a:hover {
   background: rgba(34, 204, 247, 0.04);
 }
 .contact-card-icon {
-  width: 50px; /* Increased */
+  width: 50px;
   height: 50px;
   border-radius: 10px;
   background: rgba(34, 204, 247, 0.1);
@@ -821,7 +817,7 @@ a:hover {
   align-items: center;
   justify-content: center;
   color: var(--accent);
-  font-size: 1.2rem; /* Increased */
+  font-size: 1.2rem;
   flex-shrink: 0;
 }
 .contact-card-text {
@@ -831,14 +827,14 @@ a:hover {
   overflow: hidden;
 }
 .contact-card-label {
-  font-size: 0.8rem; /* Increased */
+  font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-muted);
   font-weight: 600;
 }
 .contact-card-value {
-  font-size: 1rem; /* Increased */
+  font-size: 1rem;
   color: var(--light);
   font-weight: 500;
   white-space: nowrap;
@@ -861,7 +857,7 @@ a:hover {
   background: var(--dark);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 3rem; /* Increased */
+  padding: 3rem;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -879,20 +875,20 @@ a:hover {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; /* Increased */
+  gap: 1.5rem;
   flex: 1;
 }
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem; /* Increased */
+  gap: 1.5rem;
 }
 .contact-form .form-group {
   margin: 0;
 }
 .contact-form .form-group label {
   display: block;
-  font-size: 0.85rem; /* Increased */
+  font-size: 0.85rem;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -902,13 +898,13 @@ a:hover {
 .contact-form .form-group input,
 .contact-form .form-group textarea {
   width: 100%;
-  padding: 1.1rem; /* Increased */
+  padding: 1.1rem;
   background: var(--dark2);
   border: 1px solid var(--border);
   border-radius: 10px;
   color: var(--light);
   font-family: "Inter", sans-serif;
-  font-size: 1rem; /* Increased */
+  font-size: 1rem;
   transition: all 200ms;
   outline: none;
 }
@@ -919,19 +915,19 @@ a:hover {
   box-shadow: 0 0 0 3px rgba(34, 204, 247, 0.12);
 }
 .contact-form .form-group textarea {
-  min-height: 180px; /* Increased */
+  min-height: 180px;
   resize: vertical;
   flex: 1;
 }
 .contact-form .form-submit {
   width: 100%;
-  padding: 1.2rem; /* Increased */
+  padding: 1.2rem;
   background: linear-gradient(135deg, var(--accent), #1eaad8);
   color: var(--dark);
   border: none;
   border-radius: 10px;
   font-family: "Inter", sans-serif;
-  font-size: 1rem; /* Increased */
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -972,17 +968,17 @@ a:hover {
 footer {
   background: var(--dark);
   border-top: 1px solid var(--border);
-  padding: 2.5rem 4rem; /* Increased */
+  padding: 2.5rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  max-width: 1500px; /* Increased */
+  max-width: 1500px;
   margin: 0 auto;
 }
 footer p {
-  font-size: 0.95rem; /* Increased */
+  font-size: 0.95rem;
   color: var(--text-muted);
 }
 .footer-social {
@@ -990,7 +986,7 @@ footer p {
   gap: 1rem;
 }
 .footer-social .social-btn {
-  width: 46px; /* Increased */
+  width: 46px;
   height: 46px;
   border-radius: 8px;
   border: 1px solid var(--border);
@@ -998,7 +994,7 @@ footer p {
   align-items: center;
   justify-content: center;
   color: var(--text-muted);
-  font-size: 1.1rem; /* Increased */
+  font-size: 1.1rem;
   transition: all 200ms;
 }
 .footer-social .social-btn:hover {
@@ -1008,6 +1004,9 @@ footer p {
 }
 
 /* ===== RESPONSIVE ===== */
+/* Desktop specific optimizations are untouched above. */
+/* Mobile optimizations below have been refined for perfect sizing. */
+
 @media (max-width: 1200px) {
   .section {
     padding: 6rem 2rem;
@@ -1023,38 +1022,43 @@ footer p {
   }
   #welcome-section {
     grid-template-columns: 1fr;
-    grid-template-rows: 50vh auto;
+    grid-template-rows: 40vh auto; /* Optimized image height for mobile */
+    min-height: auto;
   }
   .hero-photo-panel {
-    height: 50vh;
-    padding-top: 70px;
+    height: 40vh; 
+    padding-top: 60px;
   }
   .hero-photo-panel img {
-    object-position: center top;
-    -webkit-mask-image: linear-gradient(
-      to bottom,
-      black 60%,
-      transparent 100%
-    );
-    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    object-position: center 20%; /* Move face up slightly so it's not cut off */
   }
   .hero-photo-panel::after {
     display: none;
   }
   .hero-text-panel {
-    padding: 4rem 2rem;
-    /* Changed to left and justified for better readability and alignment on mobile */
+    padding: 3rem 1.5rem 4rem 1.5rem; /* Tighter padding for mobile */
     text-align: left;
   }
   .hero-eyebrow {
+    font-size: 0.9rem; /* Smaller eyebrow text on mobile */
     justify-content: flex-start;
+    margin-bottom: 0.8rem;
+  }
+  .hero-title {
+    font-size: 2.2rem; /* Fixed reasonable size for mobile */
+    margin-bottom: 1rem;
   }
   .hero-subtitle {
-    margin: 0 0 2.5rem 0;
+    margin: 0 0 2rem 0;
+    font-size: 1rem;
     text-align: justify;
   }
   .hero-btns {
     justify-content: flex-start;
+  }
+  .btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.8rem;
   }
   .contact-grid {
     grid-template-columns: 1fr;
@@ -1064,17 +1068,19 @@ footer p {
   }
   .contact-form-wrap {
     order: 2;
+    padding: 2rem;
   }
   .form-row {
     grid-template-columns: 1fr;
   }
   .project-card-inner {
     grid-template-columns: 1fr;
+    padding: 2rem;
+    gap: 2rem;
   }
   .project-thumb {
-    aspect-ratio: 16/7;
-    max-width: 350px; /* Slightly larger on mobile */
-    margin: 0 auto;
+    aspect-ratio: 16/9; /* Better aspect ratio for mobile screens */
+    max-width: 100%;
   }
 }
 @media (max-width: 768px) {
@@ -1087,11 +1093,24 @@ footer p {
   #navbar {
     padding: 1rem 1.5rem;
   }
+  .nav-brand {
+    font-size: 1.3rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
   .about-grid {
     grid-template-columns: 1fr;
   }
   .about-intro {
     grid-column: span 1;
+    padding: 2rem;
+  }
+  .about-card {
+    padding: 2rem;
   }
   footer {
     padding: 1.5rem;
@@ -1105,19 +1124,20 @@ footer p {
     gap: 0.8rem;
     flex-wrap: wrap;
   }
+  /* Tuck arrows neatly inside on mobile */
   .proj-arrow.prev {
-    left: 10px;
+    left: 5px;
   }
   .proj-arrow.next {
-    right: 10px;
+    right: 5px;
   }
 }
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 2.4rem;
+    font-size: 2rem;
   }
   .hero-text-panel {
-    padding: 3rem 1.5rem;
+    padding: 2.5rem 1rem 3rem 1rem;
   }
   .section {
     padding: 4rem 1rem;
@@ -1130,14 +1150,23 @@ footer p {
     font-size: 1.8rem;
   }
   .contact-form-wrap {
-    padding: 2rem;
+    padding: 1.5rem;
   }
   .contact-card {
     padding: 1rem 1.2rem;
   }
   .project-card-inner {
-    padding: 2rem;
-    gap: 2rem;
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+  /* Stack buttons vertically on very small screens */
+  .hero-btns {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .btn {
+    width: 100%;
+    justify-content: center;
   }
   footer {
     padding: 2rem 1rem;
