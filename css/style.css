@@ -297,7 +297,7 @@ a:hover {
   font-style: italic;
 }
 .hero-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   color: var(--text-muted);
   line-height: 1.8;
   max-width: 650px;
