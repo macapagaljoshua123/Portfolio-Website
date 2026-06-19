@@ -361,6 +361,71 @@ a:hover {
   }
 }
 
+/* ===== AVATAR WINDOW CAROUSEL (auto-rotating hero photo) =====
+   Two stacked full-bleed photos. The front one wipes away along a
+   single clean edge (like a window sliding shut) to reveal the
+   back one underneath. No grid, no seams, no lines.
+   The fade-to-text mask lives on the OUTER stage only, so the two
+   layers never get double-faded into a ghosted overlap. */
+.avatar-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, black 0%, black 75%, transparent 100%);
+  mask-image: linear-gradient(to right, black 0%, black 75%, transparent 100%);
+}
+.avatar-stage .avatar-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: saturate(1.1) contrast(1.05);
+  -webkit-mask-image: none;
+  mask-image: none;
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 0.95s cubic-bezier(0.65, 0, 0.35, 1);
+}
+.avatar-layer.back {
+  z-index: 1;
+  transition: none; /* the back layer never animates itself */
+}
+.avatar-layer.front {
+  z-index: 2;
+}
+.avatar-layer.front.sliding {
+  clip-path: inset(0 0 0 100%);
+}
+
+.avatar-dots {
+  position: absolute;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 0.5rem;
+}
+.avatar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 250ms;
+}
+.avatar-dot.active {
+  background: var(--accent);
+  width: 22px;
+  border-radius: 100px;
+  box-shadow: 0 0 8px rgba(34, 204, 247, 0.5);
+}
+
 /* ===== SECTIONS ===== */
 .section {
   padding: 7rem 4rem;
@@ -1031,11 +1096,19 @@ footer p {
     height: 40vh; 
     padding-top: 60px;
   }
-  .hero-photo-panel img {
+  .hero-photo-panel img,
+  .avatar-stage .avatar-layer {
     object-position: center 20%; /* Move face up slightly so it's not cut off */
   }
   .hero-photo-panel::after {
     display: none;
+  }
+  .avatar-stage {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .avatar-dots {
+    bottom: 0.8rem;
   }
   .hero-text-panel {
     padding: 3rem 1.5rem 4rem 1.5rem; /* Tighter padding for mobile */
@@ -1192,5 +1265,16 @@ footer p {
     width: 40px;
     height: 40px;
     font-size: 0.9rem;
+  }
+}
+
+/* Respect reduced-motion preference for the avatar carousel */
+@media (prefers-reduced-motion: reduce) {
+  .avatar-layer {
+    transition: opacity 0.4s ease !important;
+  }
+  .avatar-layer.front.sliding {
+    clip-path: inset(0 0 0 0) !important;
+    opacity: 0;
   }
 }

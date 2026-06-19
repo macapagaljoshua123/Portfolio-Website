@@ -136,3 +136,123 @@
   // Start AutoPlay
   startProjectAutoPlay();
 })();
+
+/* ============================================================
+   AVATAR WINDOW CAROUSEL
+   Two stacked photos (front/back). Every 5s the front photo
+   wipes away along one clean edge — like a window sliding shut —
+   revealing the photo underneath. Loops forever. No grid, no
+   seams, no double-exposure.
+   ============================================================ */
+(function () {
+  // Edit this list to match your actual files in assets/img/.
+  // Tip: filenames with spaces work, but renaming them without
+  // spaces (e.g. avatar-2.jpg) is safer once this is deployed.
+  const AVATAR_IMAGES = [
+    "assets/img/avatar.png",
+    "assets/img/Avatar Pic 1.jpg",
+    "assets/img/Avatar Pic 2.jpg",
+    "assets/img/Avatar Pic 3.jpg",
+    "assets/img/Avatar Pic 4.jpg",
+  ];
+
+  const SLIDE_INTERVAL = 5000; // every 5 seconds
+  const TRANSITION_MS = 950; // must match the CSS clip-path transition duration
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const stage = document.getElementById("avatarStage");
+    const front = document.getElementById("avatarFront");
+    const back = document.getElementById("avatarBack");
+    const dotsWrap = document.getElementById("avatarDots");
+    if (!stage || !front || !back) return; // markup not present, skip safely
+
+    let current = 0;
+    let timer = null;
+    let isAnimating = false;
+
+    function setActiveDot(index) {
+      if (!dotsWrap) return;
+      dotsWrap.querySelectorAll(".avatar-dot").forEach(function (dot, i) {
+        dot.classList.toggle("active", i === index);
+      });
+    }
+
+    function buildDots() {
+      if (!dotsWrap) return;
+      dotsWrap.innerHTML = "";
+      AVATAR_IMAGES.forEach(function (_, i) {
+        const dot = document.createElement("button");
+        dot.className = "avatar-dot" + (i === 0 ? " active" : "");
+        dot.setAttribute("aria-label", "Show photo " + (i + 1));
+        dot.addEventListener("click", function () {
+          goTo(i);
+        });
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    function goTo(targetIndex) {
+      if (isAnimating || targetIndex === current) return;
+      runSlide(targetIndex);
+    }
+
+    function nextSlide() {
+      if (isAnimating) return;
+      const next = (current + 1) % AVATAR_IMAGES.length;
+      runSlide(next);
+    }
+
+    function runSlide(targetIndex) {
+      isAnimating = true;
+
+      // Back layer always holds the photo we're sliding toward.
+      back.src = AVATAR_IMAGES[targetIndex];
+
+      // Kick off the wipe on the next frame so the browser has
+      // committed the back image first.
+      requestAnimationFrame(function () {
+        front.classList.add("sliding");
+      });
+
+      window.setTimeout(function () {
+        // Front is fully wiped away (invisible) at this point —
+        // safe to swap its content and snap it back instantly.
+        front.style.transition = "none";
+        front.src = AVATAR_IMAGES[targetIndex];
+        front.classList.remove("sliding");
+        front.style.clipPath = "inset(0 0 0 0)";
+        void front.offsetWidth; // force reflow so the snap applies with no transition
+        front.style.clipPath = ""; // hand control back to the stylesheet
+        front.style.transition = ""; // re-enable the CSS transition for next time
+
+        current = targetIndex;
+        setActiveDot(current);
+
+        // Preload the photo after this one into the back layer.
+        back.src = AVATAR_IMAGES[(current + 1) % AVATAR_IMAGES.length];
+        isAnimating = false;
+      }, TRANSITION_MS);
+    }
+
+    function start() {
+      stop();
+      timer = window.setInterval(nextSlide, SLIDE_INTERVAL);
+    }
+    function stop() {
+      if (timer) {
+        window.clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    // ---- init ----
+    front.src = AVATAR_IMAGES[0];
+    back.src = AVATAR_IMAGES[1 % AVATAR_IMAGES.length];
+    buildDots();
+    start();
+
+    // Pause on hover so visitors can actually look at one photo.
+    stage.addEventListener("mouseenter", stop);
+    stage.addEventListener("mouseleave", start);
+  });
+})();

@@ -15,6 +15,7 @@
     />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css" />
+    <script src="js/script.js"></script>
   </head>
   <body>
     <!-- ===== SIDEBAR OVERLAY ===== -->
@@ -64,11 +65,14 @@
       </button>
     </nav>
 
-    <!-- ===== HERO ===== -->
     <header id="welcome-section">
-      <div class="hero-photo-panel">
-        <img src="assets/img/avatar-removebg-preview.png" alt="Joshua L. Macapagal" />
-      </div>
+  <div class="hero-photo-panel">
+  <div class="avatar-stage" id="avatarStage">
+    <img class="avatar-layer back" id="avatarBack" src="assets/img/avatar.png" alt="" aria-hidden="true" />
+    <img class="avatar-layer front" id="avatarFront" src="assets/img/avatar.png" alt="Joshua L. Macapagal" />
+    <div class="avatar-dots" id="avatarDots"></div>
+  </div>
+</div>
       <div class="hero-text-panel">
         <p class="hero-eyebrow">Software Developer &amp; Web Designer</p>
         <h1 class="hero-title">
