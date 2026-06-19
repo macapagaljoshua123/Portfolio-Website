@@ -27,6 +27,8 @@ body {
   font-size: 18px;
   overflow-x: hidden;
   line-height: 1.7;
+  max-width: 100%;
+  width: 100%;
 }
 a {
   color: var(--accent);
@@ -1009,16 +1011,16 @@ footer p {
 
 @media (max-width: 1200px) {
   .section {
-    padding: 6rem 2rem;
+    padding: 5rem 1.5rem;
   }
   #navbar {
-    padding: 1.2rem 2rem;
+    padding: 1.2rem 1.5rem;
   }
 }
 
 @media (max-width: 900px) {
   .section {
-    padding: 5rem 1.5rem;
+    padding: 4rem 1.5rem;
   }
   #welcome-section {
     grid-template-columns: 1fr;
@@ -1055,6 +1057,8 @@ footer p {
   }
   .hero-btns {
     justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
   .btn {
     padding: 0.8rem 1.8rem;
@@ -1091,10 +1095,10 @@ footer p {
     display: none;
   }
   #navbar {
-    padding: 1rem 1.5rem;
+    padding: 1rem 1rem;
   }
   .nav-brand {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
   .section-title {
     font-size: 2rem;
@@ -1131,6 +1135,16 @@ footer p {
   .proj-arrow.next {
     right: 5px;
   }
+  /* Better contact card styling on tablet */
+  .contact-card {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .contact-card-value {
+    word-break: break-word;
+    white-space: normal;
+  }
 }
 @media (max-width: 480px) {
   .hero-title {
@@ -1140,7 +1154,7 @@ footer p {
     padding: 2.5rem 1rem 3rem 1rem;
   }
   .section {
-    padding: 4rem 1rem;
+    padding: 3rem 1rem;
   }
   .sidebar {
     width: 220px;
@@ -1169,6 +1183,14 @@ footer p {
     justify-content: center;
   }
   footer {
-    padding: 2rem 1rem;
+    padding: 1.5rem 1rem;
+  }
+  .footer-social {
+    gap: 0.8rem;
+  }
+  .footer-social .social-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 0.9rem;
   }
 }
