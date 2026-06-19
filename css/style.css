@@ -1278,24 +1278,32 @@ footer p {
     opacity: 0;
   }
 }
-/* ===== SCROLL REVEAL - Additional Stagger ===== */
-/* Add staggered delays for cards inside grids */
 
-.about-card:nth-child(2) { transition-delay: 0.1s; }
-.about-card:nth-child(3) { transition-delay: 0.2s; }
-.about-card:nth-child(4) { transition-delay: 0.3s; }
+/* ===== SCROLL REVEAL - Bidirectional & Infinite ===== */
+/* Elements will fade in/out based on scroll position */
 
-.contact-form-wrap { transition-delay: 0.1s; }
-.contact-info { transition-delay: 0.2s; }
-
-/* Project card inner - reset any conflicting styles */
-.project-card-inner {
-  /* The JS will handle the animation, but ensure it starts hidden */
-  opacity: 1; /* default, JS will override */
-  transform: none; /* default, JS will override */
+.hero-text-panel {
+  /* Hero stays visible always */
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
-/* Ensure smooth transitions for all animated elements */
+/* Staggered delays for cards - only when appearing */
+.about-card:nth-child(2) { transition-delay: 0.05s; }
+.about-card:nth-child(3) { transition-delay: 0.1s; }
+.about-card:nth-child(4) { transition-delay: 0.15s; }
+
+.contact-form-wrap { transition-delay: 0.05s; }
+.contact-info { transition-delay: 0.1s; }
+
+/* Project cards staggered effect */
+.project-card:nth-child(1) .project-card-inner { transition-delay: 0s; }
+.project-card:nth-child(2) .project-card-inner { transition-delay: 0.05s; }
+.project-card:nth-child(3) .project-card-inner { transition-delay: 0.1s; }
+.project-card:nth-child(4) .project-card-inner { transition-delay: 0.15s; }
+.project-card:nth-child(5) .project-card-inner { transition-delay: 0.2s; }
+
+/* Smooth transitions for all animated elements */
 .hero-text-panel,
 .about-intro,
 .about-card,
@@ -1304,4 +1312,41 @@ footer p {
 .contact-info,
 .project-card-inner {
   will-change: transform, opacity;
+  backface-visibility: hidden;
+}
+
+/* Ensure about cards maintain staggered delays */
+.about-card {
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Project card inner transitions */
+.project-card-inner {
+  transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+              transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 300ms,
+              box-shadow 300ms;
+}
+
+/* Prevent flash on load */
+.about-intro,
+.about-card,
+.contact-form-wrap,
+.contact-info {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* Hero text panel - always visible */
+.hero-text-panel {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .about-card:nth-child(2) { transition-delay: 0.02s; }
+  .about-card:nth-child(3) { transition-delay: 0.04s; }
+  .about-card:nth-child(4) { transition-delay: 0.06s; }
 }

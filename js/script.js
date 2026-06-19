@@ -247,6 +247,7 @@
   });
 })();
 // ===== SCROLL REVEAL ANIMATIONS =====
+// ===== SCROLL REVEAL ANIMATIONS (Bidirectional + Infinite) =====
 (function() {
   // Select all elements that should animate on scroll
   const revealElements = document.querySelectorAll(
@@ -255,61 +256,84 @@
   
   // Add initial state
   revealElements.forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(40px)';
-    el.style.transition = 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    // Only set initial state if not already visible (hero)
+    if (!el.closest('#welcome-section')) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(40px)';
+      el.style.transition = 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    }
   });
   
-  // Intersection Observer
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
+  // Function to check if element is in viewport
+  function isInViewport(element, offset = 0.15) {
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+    const threshold = windowHeight * offset;
+    
+    return (
+      rect.top < windowHeight - threshold &&
+      rect.bottom > threshold
+    );
+  }
+  
+  // Function to update all elements
+  function updateRevealElements() {
+    revealElements.forEach(el => {
+      // Skip hero section elements - they should stay visible
+      if (el.closest('#welcome-section')) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+        return;
+      }
+      
+      if (isInViewport(el, 0.12)) {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      } else {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(40px)';
       }
     });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-  });
-  
-  revealElements.forEach(el => observer.observe(el));
-  
-  // Also handle project cards inside the track - they're different
-  const projectCards = document.querySelectorAll('.project-card');
-  const projectObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const cardInner = entry.target.querySelector('.project-card-inner');
-        if (cardInner) {
-          cardInner.style.opacity = '1';
-          cardInner.style.transform = 'translateY(0)';
-        }
-        projectObserver.unobserve(entry.target);
+    
+    // Handle project cards
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+      const inner = card.querySelector('.project-card-inner');
+      if (!inner) return;
+      
+      if (isInViewport(card, 0.12)) {
+        inner.style.opacity = '1';
+        inner.style.transform = 'translateY(0)';
+      } else {
+        inner.style.opacity = '0';
+        inner.style.transform = 'translateY(40px)';
       }
     });
-  }, {
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-  });
+  }
   
-  projectCards.forEach(card => {
-    const inner = card.querySelector('.project-card-inner');
-    if (inner) {
-      inner.style.opacity = '0';
-      inner.style.transform = 'translateY(40px)';
-      inner.style.transition = 'opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-    }
-    projectObserver.observe(card);
-  });
+  // Debounce function for performance
+  function debounce(func, wait = 10) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
   
-  // Hero section - make it visible immediately with a slight delay
-  setTimeout(() => {
-    const heroText = document.querySelector('.hero-text-panel');
-    if (heroText) {
-      heroText.style.opacity = '1';
-      heroText.style.transform = 'translateY(0)';
-    }
-  }, 100);
+  // Initial check after a small delay
+  setTimeout(updateRevealElements, 100);
+  
+  // Listen to scroll events with debounce
+  const debouncedUpdate = debounce(updateRevealElements, 10);
+  window.addEventListener('scroll', debouncedUpdate);
+  window.addEventListener('resize', debouncedUpdate);
+  
+  // Also check on orientation change
+  window.addEventListener('orientationchange', () => {
+    setTimeout(updateRevealElements, 300);
+  });
 })();
