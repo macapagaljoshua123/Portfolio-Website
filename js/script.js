@@ -137,17 +137,8 @@
   startProjectAutoPlay();
 })();
 
-/* ============================================================
-   AVATAR WINDOW CAROUSEL
-   Two stacked photos (front/back). Every 5s the front photo
-   wipes away along one clean edge — like a window sliding shut —
-   revealing the photo underneath. Loops forever. No grid, no
-   seams, no double-exposure.
-   ============================================================ */
+
 (function () {
-  // Edit this list to match your actual files in assets/img/.
-  // Tip: filenames with spaces work, but renaming them without
-  // spaces (e.g. avatar-2.jpg) is safer once this is deployed.
   const AVATAR_IMAGES = [
     "assets/img/avatar.png",
     "assets/img/Avatar Pic 1.jpg",
